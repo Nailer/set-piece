@@ -1,0 +1,10 @@
+import { promises as fs } from "node:fs";
+import sharp from "sharp";
+await sharp("data/files/set-kitchen/q.png").resize(640, 640, { fit: "inside" }).webp({ quality: 84 }).toFile("seed/files/set-kitchen/q.webp");
+const sets = JSON.parse(await fs.readFile("seed/sets.json", "utf8"));
+const data = JSON.parse(await fs.readFile("data/sets.json", "utf8"));
+const v = Date.now().toString(36);
+const k = sets.find((s: { id: string }) => s.id === "set-kitchen");
+k.pieces.q = { ...data.find((s: { id: string }) => s.id === "set-kitchen").pieces.q, imageUrl: `/api/file/set-kitchen/q.webp?v=${v}`, modelUrl: `/api/file/set-kitchen/q.glb?v=${v}` };
+await fs.writeFile("seed/sets.json", JSON.stringify(sets, null, 1));
+console.log(k.pieces.q.imageUrl, k.pieces.q.modelUrl);

@@ -329,8 +329,7 @@ em {
     padding: 0 16px 34px;
   }
   .hero .caption {
-    top: calc(46vh - 34px);
-    bottom: auto;
+    display: none;
   }
 }
 

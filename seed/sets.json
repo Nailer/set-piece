@@ -1,0 +1,344 @@
+[
+ {
+  "id": "set-kitchen",
+  "name": "Kitchen Kingdom",
+  "theme": "kitchen utensils carved from warm olive wood",
+  "author": "Set Piece",
+  "pieces": {
+   "k": {
+    "kind": "k",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 37834
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 97153
+     }
+    ],
+    "imageUrl": "/api/file/set-kitchen/k.webp",
+    "modelUrl": "/api/file/set-kitchen/k.glb"
+   },
+   "q": {
+    "kind": "q",
+    "imageUrl": "/api/file/set-kitchen/q.webp?v=mwku0bag",
+    "modelUrl": "/api/file/set-kitchen/q.glb?v=mwku0bag",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 42746
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 67081
+     }
+    ]
+   },
+   "r": {
+    "kind": "r",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 41732
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 63255
+     }
+    ],
+    "imageUrl": "/api/file/set-kitchen/r.webp",
+    "modelUrl": "/api/file/set-kitchen/r.glb"
+   },
+   "b": {
+    "kind": "b",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 41905
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 62150
+     }
+    ],
+    "imageUrl": "/api/file/set-kitchen/b.webp",
+    "modelUrl": "/api/file/set-kitchen/b.glb"
+   },
+   "n": {
+    "kind": "n",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 38485
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 109815
+     }
+    ],
+    "imageUrl": "/api/file/set-kitchen/n.webp",
+    "modelUrl": "/api/file/set-kitchen/n.glb"
+   },
+   "p": {
+    "kind": "p",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 38785
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 80107
+     }
+    ],
+    "imageUrl": "/api/file/set-kitchen/p.webp",
+    "modelUrl": "/api/file/set-kitchen/p.glb"
+   }
+  },
+  "status": "ready",
+  "createdAt": 1794925282374,
+  "plays": 0,
+  "starter": true
+ },
+ {
+  "id": "set-robots",
+  "name": "Tin Robots",
+  "theme": "retro wind-up tin toy robots in red, cream and silver with rivets",
+  "author": "Set Piece",
+  "pieces": {
+   "k": {
+    "kind": "k",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 34030
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 62594
+     }
+    ],
+    "imageUrl": "/api/file/set-robots/k.webp",
+    "modelUrl": "/api/file/set-robots/k.glb"
+   },
+   "q": {
+    "kind": "q",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 44178
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 86722
+     }
+    ],
+    "imageUrl": "/api/file/set-robots/q.webp",
+    "modelUrl": "/api/file/set-robots/q.glb"
+   },
+   "r": {
+    "kind": "r",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 54739
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 82574
+     }
+    ],
+    "imageUrl": "/api/file/set-robots/r.webp",
+    "modelUrl": "/api/file/set-robots/r.glb"
+   },
+   "b": {
+    "kind": "b",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 58470
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 62628
+     }
+    ],
+    "imageUrl": "/api/file/set-robots/b.webp",
+    "modelUrl": "/api/file/set-robots/b.glb"
+   },
+   "n": {
+    "kind": "n",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 43502
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 62086
+     }
+    ],
+    "imageUrl": "/api/file/set-robots/n.webp",
+    "modelUrl": "/api/file/set-robots/n.glb"
+   },
+   "p": {
+    "kind": "p",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 38034
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 91630
+     }
+    ],
+    "imageUrl": "/api/file/set-robots/p.webp",
+    "modelUrl": "/api/file/set-robots/p.glb"
+   }
+  },
+  "status": "ready",
+  "createdAt": 1794926157971,
+  "plays": 0,
+  "starter": true
+ },
+ {
+  "id": "set-sea",
+  "name": "Under the Sea",
+  "theme": "coral reef creatures made of frosted sea glass and polished shells",
+  "author": "Set Piece",
+  "pieces": {
+   "k": {
+    "kind": "k",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 33692
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 68345
+     }
+    ],
+    "imageUrl": "/api/file/set-sea/k.webp",
+    "modelUrl": "/api/file/set-sea/k.glb"
+   },
+   "q": {
+    "kind": "q",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 65562
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 68057
+     }
+    ],
+    "imageUrl": "/api/file/set-sea/q.webp",
+    "modelUrl": "/api/file/set-sea/q.glb"
+   },
+   "r": {
+    "kind": "r",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 38469
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 65852
+     }
+    ],
+    "imageUrl": "/api/file/set-sea/r.webp",
+    "modelUrl": "/api/file/set-sea/r.glb"
+   },
+   "b": {
+    "kind": "b",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 41929
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 68834
+     }
+    ],
+    "imageUrl": "/api/file/set-sea/b.webp",
+    "modelUrl": "/api/file/set-sea/b.glb"
+   },
+   "n": {
+    "kind": "n",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 43817
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 72456
+     }
+    ],
+    "imageUrl": "/api/file/set-sea/n.webp",
+    "modelUrl": "/api/file/set-sea/n.glb"
+   },
+   "p": {
+    "kind": "p",
+    "stages": [
+     {
+      "name": "draw",
+      "label": "Drawn by Lux3D",
+      "ms": 51286
+     },
+     {
+      "name": "build",
+      "label": "Built in 3D by Lux3D",
+      "ms": 62321
+     }
+    ],
+    "imageUrl": "/api/file/set-sea/p.webp",
+    "modelUrl": "/api/file/set-sea/p.glb"
+   }
+  },
+  "status": "ready",
+  "createdAt": 1794927044168,
+  "plays": 0,
+  "starter": true
+ }
+]
