@@ -1,0 +1,8 @@
+.env*
+!.env.example
+node_modules
+.next
+data
+spike/out*
+next-env.d.ts
+*.tsbuildinfo
