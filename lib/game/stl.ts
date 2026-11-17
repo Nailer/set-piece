@@ -12,8 +12,18 @@ export async function loadSolid(url: string): Promise<THREE.BufferGeometry> {
   gltf.scene.traverse((o) => {
     const m = o as THREE.Mesh;
     if (!m.isMesh) return;
+    // Compressed models store positions as small integers; print files need plain floats.
+    const src = m.geometry.getAttribute("position");
+    const out = new Float32Array(src.count * 3);
+    const v = new THREE.Vector3();
+    for (let i = 0; i < src.count; i++) {
+      v.fromBufferAttribute(src, i);
+      out[i * 3] = v.x;
+      out[i * 3 + 1] = v.y;
+      out[i * 3 + 2] = v.z;
+    }
     const g = new THREE.BufferGeometry();
-    g.setAttribute("position", m.geometry.getAttribute("position").clone());
+    g.setAttribute("position", new THREE.BufferAttribute(out, 3));
     if (m.geometry.index) g.setIndex(m.geometry.index.clone());
     g.applyMatrix4(m.matrixWorld);
     parts.push(g.index ? g.toNonIndexed() : g);

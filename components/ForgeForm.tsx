@@ -13,6 +13,17 @@ const IDEAS = [
   "origami animals folded from gold paper",
 ];
 
+/** "garden tools in cast iron" becomes "Garden Tools". */
+const autoName = (theme: string) =>
+  theme
+    .split(/\b(?:in|made|carved|from|of|with)\b/i)[0]
+    .trim()
+    .split(/\s+/)
+    .slice(0, 4)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ")
+    .slice(0, 40);
+
 export function ForgeForm() {
   const router = useRouter();
   const [mode, setMode] = useState<"words" | "photo">("words");
@@ -36,6 +47,7 @@ export function ForgeForm() {
     setSending(true);
     const data = new FormData(e.currentTarget);
     if (mode === "words") data.delete("photo");
+    if (!name.trim()) data.set("name", autoName(theme) || "My set");
     try {
       const res = await fetch("/api/forge", { method: "POST", body: data });
       const body = await res.json();
@@ -122,7 +134,8 @@ export function ForgeForm() {
 
         <label className="field">
           <span>Name of the set</span>
-          <input name="name" maxLength={40} required value={name} onChange={(e) => setName(e.target.value)} placeholder="The Potting Shed" />
+          <input name="name" maxLength={40} value={name} onChange={(e) => setName(e.target.value)} placeholder={autoName(theme) || "The Potting Shed"} />
+          <small>Leave it empty and the theme becomes the name.</small>
         </label>
         <label className="field">
           <span>Your name (optional)</span>

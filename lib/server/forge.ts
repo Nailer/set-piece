@@ -25,7 +25,7 @@ const SILHOUETTE: Record<Kind, string> = {
 };
 
 const prompt = (k: Kind, theme: string) =>
-  `A single ${KIND_NAME[k].toLowerCase()} chess piece themed as ${theme}. It is ${SILHOUETTE[k]}. One object standing upright on a round flat base, centred, front view, plain white background, studio product photo, nothing else in the picture.`;
+  `A single ${KIND_NAME[k].toLowerCase()} chess piece themed as ${theme}. It is ${SILHOUETTE[k]}. One object standing upright on a round flat base, centred, front view, plain white background, studio product photo, nothing else in the picture, no writing or letters anywhere.`;
 
 const follow = (k: Kind, theme: string) =>
   `${prompt(k, theme)} Copy only the material, colours, surface detail and the round base of the king in the reference picture. The shape must be a ${KIND_NAME[k].toLowerCase()}, not a king: ${SILHOUETTE[k]}.`;

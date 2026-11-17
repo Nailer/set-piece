@@ -38,6 +38,11 @@ export function Play({ set: initialSet, mode, level = 1, side = "w", game }: Pro
   const chessRef = useRef(new Chess());
   const workerRef = useRef<Worker | null>(null);
   const busyRef = useRef(false);
+  /** Bumped on undo and restart, so a computer reply for an old position is thrown away. */
+  const epochRef = useRef(0);
+  const [sendError, setSendError] = useState(false);
+  const [autoFlip, setAutoFlip] = useState(false);
+  const movesRef = useRef<HTMLOListElement>(null);
   const [set, setSet] = useState(initialSet);
   const [fen, setFen] = useState(chessRef.current.fen());
   const [history, setHistory] = useState<string[]>([]);
@@ -180,13 +185,9 @@ export function Play({ set: initialSet, mode, level = 1, side = "w", game }: Pro
       boardRef.current?.mark({ last: [m.from, m.to], check: king });
       sync();
       busyRef.current = false;
-      if (local && mode === "online" && online && seat.token) {
-        void fetch(`/api/games/${online.id}/move`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ token: seat.token, san: m.san }),
-        });
-      }
+      if (local && mode === "online" && online && seat.token) void send(m.san);
+      // Pass and play: turn the board to whoever moves next.
+      if (mode === "local" && autoFlipRef.current && !c.isGameOver()) setOrientation(c.turn());
       checkEnd();
       if (mode === "cpu" && !c.isGameOver() && c.turn() !== side) askComputer();
       return true;
@@ -195,18 +196,43 @@ export function Play({ set: initialSet, mode, level = 1, side = "w", game }: Pro
     [mode, online, seat.token, side, sync, checkEnd],
   );
 
+  const autoFlipRef = useRef(autoFlip);
+  autoFlipRef.current = autoFlip;
+
+  /** Sends an online move, retrying a few times if the connection drops. */
+  const send = async (san: string) => {
+    for (let i = 0; i < 4; i++) {
+      try {
+        const res = await fetch(`/api/games/${online!.id}/move`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token: seat.token, san }),
+        });
+        if (res.ok || res.status === 400) {
+          setSendError(!res.ok);
+          return;
+        }
+      } catch {
+        // retry
+      }
+      await new Promise((r) => setTimeout(r, 1500 * (i + 1)));
+    }
+    setSendError(true);
+  };
+
   const askComputer = () => {
     const c = chessRef.current;
     if (!workerRef.current) workerRef.current = new Worker(new URL("../lib/game/ai.worker.ts", import.meta.url), { type: "module" });
     const w = workerRef.current;
-    const id = Date.now();
+    const id = ++epochRef.current;
     setThinking(true);
     const started = Date.now();
     w.onmessage = (e: MessageEvent<{ id: number; san: string | null }>) => {
-      if (e.data.id !== id) return;
+      if (e.data.id !== id || id !== epochRef.current) return;
       // A short pause reads as thinking; instant replies feel robotic.
       const wait = Math.max(0, 450 - (Date.now() - started));
       setTimeout(() => {
+        if (id !== epochRef.current) return;
         setThinking(false);
         if (e.data.san) void play(e.data.san, false);
       }, wait);
@@ -215,6 +241,19 @@ export function Play({ set: initialSet, mode, level = 1, side = "w", game }: Pro
   };
 
   useEffect(() => () => workerRef.current?.terminate(), []);
+
+  // Keep the newest move in view.
+  useEffect(() => {
+    const el = movesRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [history]);
+
+  useEffect(() => {
+    if (!promo) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setPromo(null);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [promo]);
 
   // The computer moves first when the player takes black.
   useEffect(() => {
@@ -270,16 +309,12 @@ export function Play({ set: initialSet, mode, level = 1, side = "w", game }: Pro
       // storage blocked
     }
     (async () => {
-      if (token) {
-        const s: Side | null = online.seats?.w === token ? "w" : online.seats?.b === token ? "b" : null;
-        if (s) {
-          setSeat({ side: s, token });
-          setOrientation(s);
-          return;
-        }
-      }
-      // A new visitor takes the empty seat, if there is one.
-      const res = await fetch(`/api/games/${online.id}/join`, { method: "POST" });
+      // The server checks the saved seat; a new visitor takes the empty one, if there is one.
+      const res = await fetch(`/api/games/${online.id}/join`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token }),
+      });
       if (res.ok) {
         const d = (await res.json()) as { side: Side; token: string };
         try {
@@ -332,6 +367,7 @@ export function Play({ set: initialSet, mode, level = 1, side = "w", game }: Pro
   const undo = () => {
     const c = chessRef.current;
     if (busyRef.current || thinking || mode !== "cpu") return;
+    epochRef.current++;
     // Take back the computer's reply and your move.
     c.undo();
     if (c.turn() !== side) c.undo();
@@ -353,6 +389,8 @@ export function Play({ set: initialSet, mode, level = 1, side = "w", game }: Pro
   };
 
   const restart = () => {
+    epochRef.current++;
+    setThinking(false);
     const c = chessRef.current;
     c.reset();
     boardRef.current?.clearTrays();
@@ -490,7 +528,13 @@ export function Play({ set: initialSet, mode, level = 1, side = "w", game }: Pro
           </div>
         )}
 
-        <ol className="moves" aria-label="Moves">
+        {sendError && (
+          <p className="notice is-error" role="alert">
+            Your last move could not be sent. Check your connection; it will sync when you are back.
+          </p>
+        )}
+
+        <ol className="moves" aria-label="Moves" ref={movesRef}>
           {pairs.map(([n, w, b]) => (
             <li key={n}>
               <span>{n}.</span>
@@ -532,6 +576,11 @@ export function Play({ set: initialSet, mode, level = 1, side = "w", game }: Pro
           <button className="btn" onClick={resign} disabled={Boolean(result) || !mySide}>
             Resign
           </button>
+          {mode === "local" && (
+            <button className="btn" onClick={() => setAutoFlip((v) => !v)} aria-pressed={autoFlip}>
+              {autoFlip ? "Auto-turn on" : "Auto-turn off"}
+            </button>
+          )}
           <button className="btn" onClick={toggleMute} aria-pressed={muted}>
             {muted ? "Sound off" : "Sound on"}
           </button>

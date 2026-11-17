@@ -78,6 +78,8 @@ export class BoardView {
   private finish: Finish = "natural";
   private fen = "";
   private hoverMesh: THREE.Mesh;
+  /** A redraw asked for mid-animation waits until every piece has landed. */
+  private pendingRebuild = false;
 
   constructor(
     private canvas: HTMLCanvasElement,
@@ -168,12 +170,17 @@ export class BoardView {
         }
       }),
     );
-    if (this.fen) this.rebuild();
+    if (this.fen) this.safeRebuild();
   }
 
   setFinish(f: Finish) {
     this.finish = f;
-    if (this.fen) this.rebuild();
+    if (this.fen) this.safeRebuild();
+  }
+
+  private safeRebuild() {
+    if (this.tweens.length) this.pendingRebuild = true;
+    else this.rebuildKeepTray();
   }
 
   /** Scales a piece to its Staunton height and keeps it inside one square. */
@@ -470,6 +477,10 @@ export class BoardView {
         f.obj.rotation.z = 1.45;
         this.fading.splice(this.fading.indexOf(f), 1);
       }
+    }
+    if (this.pendingRebuild && !this.tweens.length) {
+      this.pendingRebuild = false;
+      this.rebuildKeepTray();
     }
     if (this.camTarget) {
       this.camera.position.lerp(this.camTarget, 1 - Math.exp(-dt * 3));
