@@ -63,8 +63,10 @@ export function ensureSeed(): Promise<void> {
         return [...known.values()];
       });
       await fs.writeFile(SEED_MARK, want);
-    } catch {
-      // No seed folder: the gallery starts empty.
+    } catch (err) {
+      // No seed folder: the gallery starts empty. Anything else is worth knowing about.
+      console.error("[set-piece] seeding failed:", err);
+      seeded = null;
     }
   })());
 }
