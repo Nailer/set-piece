@@ -41,4 +41,4 @@ Node 22 or newer. Data is stored in `data/` (or `DATA_DIR`); sets in `seed/` are
 
 The computer opponent is [js-chess-engine](https://github.com/josefjadrny/js-chess-engine) (MIT); the rules are [chess.js](https://github.com/jhlywa/chess.js) (BSD-2). The home page replays Paul Morphy's Opera Game (Paris, 1858).
 
-Built for the Manycore Aholo Global 3D AI Hackathon.
+Every piece is designed and built with [Aholo Lux3D](https://www.aholo.ai).

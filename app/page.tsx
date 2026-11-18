@@ -84,7 +84,7 @@ export default async function Home() {
           </Link>
         </div>
       </div>
-      <footer className="footer">Every piece on this site was designed and built by Aholo Lux3D. Made for the Manycore Aholo Global 3D AI Hackathon.</footer>
+      <footer className="footer">Every piece on this site was designed and built by Aholo Lux3D.</footer>
     </>
   );
 }

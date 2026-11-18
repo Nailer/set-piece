@@ -462,7 +462,7 @@ export function Play({ set: initialSet, mode, level = 1, side = "w", game }: Pro
   const forging = set.status === "forging";
   const ready = Object.values(set.pieces).filter((p) => p.modelUrl).length;
   const tweet = result
-    ? `I just played a game of chess with pieces I designed in one sentence: "${set.theme}". Made with @AholoWorld Lux3D, then 3D-printable. ${origin}/set/${set.id} #Manycorehackathon`
+    ? `I just played a game of chess with pieces I designed in one sentence: "${set.theme}". Made with @AholoWorld Lux3D, then 3D-printable. ${origin}/set/${set.id} #chess #3Dprinting`
     : "";
 
   return (

@@ -49,6 +49,6 @@ export async function resultCard(shot: string, setName: string, result: string, 
   g.font = "20px Georgia, serif";
   g.fillText(`${Math.ceil(plies / 2)} moves`, 840, y + 10);
   g.fillText("Pieces forged by Aholo Lux3D", 840, 560);
-  g.fillText("#Manycorehackathon", 840, 590);
+  g.fillText("setpiece — forge any chess set", 840, 590);
   return c.toDataURL("image/png");
 }
