@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Set Piece — project report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { font-family: "Work Sans", sans-serif; color: #f5ecdf; font-size: 21px; line-height: 1.45; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  section { width: 1280px; height: 720px; padding: 52px 64px; page-break-after: always; position: relative; overflow: hidden; background: #1a1512; }
+  section.light { background: #f2ebe0; color: #1a1512; }
+  h1, h2 { font-family: "Fraunces", serif; font-weight: 500; margin: 0; line-height: 1.04; letter-spacing: -0.01em; }
+  h1 { font-size: 112px; font-style: italic; }
+  h2 { font-size: 52px; margin-bottom: 22px; }
+  h2 em, h1 em { color: #e6c48a; }
+  section.light h2 em { color: #9a6e2c; }
+  p { margin: 0 0 13px; max-width: 60ch; }
+  .lede { font-size: 28px; max-width: 30ch; color: rgb(245 236 223 / .85); }
+  .brass { color: #e6c48a; }
+  .muted { color: rgb(245 236 223 / .65); }
+  section.light .muted { color: rgb(26 21 18 / .6); }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .cols.wide-right { grid-template-columns: 0.78fr 1.22fr; }
+  .cols.wide-left { grid-template-columns: 1.25fr 0.75fr; }
+  img { width: 100%; display: block; border-radius: 10px; }
+  img.shot { box-shadow: 0 14px 34px rgb(0 0 0 / .45); border: 1px solid rgb(245 236 223 / .12); }
+  section.light img.shot { box-shadow: 0 12px 28px rgb(0 0 0 / .18); border-color: rgb(26 21 18 / .1); }
+  figure { margin: 0; }
+  figcaption { font-size: 15px; margin-top: 8px; opacity: .7; }
+  table { border-collapse: collapse; width: 100%; font-size: 17px; }
+  th, td { text-align: left; padding: 8px 14px 8px 0; border-bottom: 1px solid rgb(26 21 18 / .14); vertical-align: top; }
+  th { font-weight: 600; font-size: 15px; text-transform: none; color: rgb(26 21 18 / .6); }
+  .step { display: grid; grid-template-columns: 150px 1fr; gap: 14px; padding: 8px 0; border-bottom: 1px solid rgb(245 236 223 / .14); font-size: 17px; }
+  .step b { font-weight: 600; color: #e6c48a; }
+  .step span { display: block; font-size: 15px; color: rgb(245 236 223 / .6); margin-top: 2px; }
+  .iter { display: grid; grid-template-columns: 560px 1fr; gap: 26px; align-items: center; margin-bottom: 12px; }
+  .iter img { border-radius: 8px; }
+  .iter b { display: block; font-family: "Fraunces", serif; font-weight: 500; font-size: 21px; }
+  .iter span { font-size: 14.5px; color: rgb(26 21 18 / .7); display: block; margin-top: 4px; line-height: 1.35; }
+  .tag { display: inline-block; font-size: 13px; font-weight: 600; padding: 2px 9px; border-radius: 999px; margin-bottom: 6px; }
+  .tag.bad { background: #f3d6cf; color: #8a2a1a; }
+  .tag.ok { background: #e7dcc4; color: #6d4d18; }
+  .tag.good { background: #d4e6dc; color: #22553f; }
+  .lineup { margin-bottom: 10px; }
+  .lineup img { width: 860px; }
+  .lineup p { margin: 0 0 6px; font-size: 18px; }
+  .lineup p b { font-family: "Fraunces", serif; font-style: italic; font-weight: 500; font-size: 22px; }
+  .grid3 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 30px; font-size: 18px; }
+  .grid3 div b { display: block; color: #e6c48a; font-weight: 600; }
+  .links { font-size: 24px; }
+  .links div { margin-bottom: 12px; }
+  .links b { display: inline-block; width: 160px; font-weight: 600; color: #e6c48a; }
+  .foot { position: absolute; left: 64px; bottom: 26px; font-size: 14px; opacity: .55; }
+  .num { position: absolute; right: 64px; bottom: 26px; font-size: 14px; opacity: .55; }
+</style>
+</head>
+<body>
+
+<section>
+  <div class="cols wide-left" style="align-items:center; height:100%; grid-template-columns: 0.85fr 1.15fr;">
+    <div>
+      <p class="brass" style="font-size:20px; letter-spacing:.02em; margin-bottom:16px">Project report</p>
+      <h1>Set Piece</h1>
+      <p class="lede" style="margin-top:24px">Any theme becomes a whole chess set. Play it, then print it.</p>
+      <p class="muted" style="margin-top:20px; max-width:34ch">Every piece on every board is designed and built by Aholo Lux3D, from a single sentence or a photo.</p>
+    </div>
+    <figure><img class="shot" src="img/cover-board.jpg" alt="A forged set, Under the Sea, mid-game on a wooden board"></figure>
+  </div>
+  <div class="foot">set-piece.onrender.com</div>
+</section>
+
+<section class="light">
+  <h2>The idea</h2>
+  <div class="cols">
+    <div>
+      <p>Chess sets are some of the oldest designed objects in the world, and a themed one is a classic gift. Commissioning one means six sculpted pieces that all look like they belong together. That usually takes an artist and a lot of money.</p>
+      <p>Aholo Lux3D can draw an object and build it in 3D. The question was whether it could do that six times, for six different pieces, and keep them looking like one set.</p>
+      <p>It can, if the king leads. Lux3D draws the king first, then draws every other piece with the king as its style reference. The material, colours and base carry over; each piece keeps its own chess shape.</p>
+      <p>The result is a set you can play straight away, against the computer or a friend, and download to 3D-print.</p>
+    </div>
+    <div>
+      <img src="img/lineup-set-robots.jpg" alt="The six Tin Robots pieces in a row">
+      <p class="muted" style="margin-top:10px; font-size:16px">“retro wind-up tin toy robots in red, cream and silver with rivets” — rook, knight, bishop, king, queen, pawn, exactly as Lux3D drew them.</p>
+    </div>
+  </div>
+  <div class="num">2</div>
+</section>
+
+<section>
+  <h2>How <em>Lux3D</em> forges a set</h2>
+  <div class="cols wide-right">
+    <div>
+      <p>Nobody models, sculpts or textures a single piece. About twelve minutes of Lux3D work per set, measured on the three sets in the gallery. Players can start a game at once: pieces land as they finish.</p>
+      <div class="step" style="margin-top:8px"><b>1. Draw the king</b><div>Multimodal-to-image turns the theme (or a photo) into a king that sets the style.<span>34–58 s</span></div></div>
+      <div class="step"><b>2. Draw five more</b><div>Same tool, with the king as the reference picture and a fixed silhouette for each piece.<span>38–66 s each</span></div></div>
+      <div class="step" style="border:0"><b>3. Build in 3D</b><div>Image-to-3D turns every drawing into a GLB, compressed from about 9 MB to 0.5 MB.<span>62–110 s each</span></div></div>
+    </div>
+    <figure><img class="shot" src="img/set-page.jpg" alt="The Tin Robots set page with the 3D king and all six drawings">
+      <figcaption>Each set page shows every piece in 3D, Lux3D’s drawings, and how long each step took.</figcaption></figure>
+  </div>
+  <div class="num">3</div>
+</section>
+
+<section class="light">
+  <h2 style="font-size:44px; margin-bottom:14px">Getting six pieces to <em>belong together</em></h2>
+  <div class="iter">
+    <img src="img/iter1.png" alt="First attempt: queen, knight and pawn all copied the king, cross included">
+    <div><span class="tag bad">First attempt</span><b>Perfect style, wrong pieces</b><span>With the king as reference, every piece came back as a copy of the king, cross and all. Only the knight changed shape, because a horse is hard to confuse.</span></div>
+  </div>
+  <div class="iter">
+    <img src="img/iter2.png" alt="Second attempt: rook and bishop correct, queen still close to the king">
+    <div><span class="tag ok">Second attempt</span><b>A silhouette for every piece</b><span>Each prompt now names the piece’s shape: a castle tower for the rook, a slit mitre for the bishop, and so on. The rook and bishop came out right. The queen still looked like the king.</span></div>
+  </div>
+  <div class="iter">
+    <img src="img/iter3.png" alt="Third attempt: king with a large cross, queen with a coronet and ball">
+    <div><span class="tag good">Third attempt</span><b>King and queen told apart</b><span>The king must carry a large cross; the queen a ring of points around a ball, with no cross anywhere. Every piece now reads at a glance. Lux3D also copied the label “KING” onto other bases, so prompts now forbid lettering.</span></div>
+  </div>
+  <div class="num">4</div>
+</section>
+
+<section class="light">
+  <h2 style="margin-bottom:14px">Three sets, three sentences</h2>
+  <div class="lineup"><p><b>Kitchen Kingdom</b> <span class="muted">— “kitchen utensils carved from warm olive wood”</span></p><img src="img/lineup-set-kitchen.jpg" alt="Kitchen Kingdom pieces"></div>
+  <div class="lineup"><p><b>Tin Robots</b> <span class="muted">— “retro wind-up tin toy robots in red, cream and silver”</span></p><img src="img/lineup-set-robots.jpg" alt="Tin Robots pieces"></div>
+  <div class="lineup"><p><b>Under the Sea</b> <span class="muted">— “coral reef creatures in frosted sea glass and shells”</span></p><img src="img/lineup-set-sea.jpg" alt="Under the Sea pieces"></div>
+  <div class="num">5</div>
+</section>
+
+<section>
+  <h2>It plays like <em>real chess</em></h2>
+  <div class="cols wide-left">
+    <figure><img class="shot" src="img/play.jpg" alt="Tin Robots mid-game, the white queen selected with its legal moves dotted">
+      <figcaption>Ten moves into a game with Tin Robots on both sides. The selected queen shows every square it can reach.</figcaption></figure>
+    <div class="grid3" style="grid-template-columns:1fr; gap:12px">
+      <div><b>Full rules</b>Castling, en passant, promotion to your own set’s pieces, every kind of draw.</div>
+      <div><b>A computer to climb</b>Four levels. Beat one to unlock the next; jade and gold finishes are prizes.</div>
+      <div><b>A friend online</b>Share a link. Moves are checked on the server, so nobody can cheat.</div>
+      <div><b>Pass and play</b>Two people, one screen, with the board turning to whoever moves next.</div>
+      <div><b>Play while it forges</b>Start before the set is finished; pieces swap in as Lux3D delivers them.</div>
+    </div>
+  </div>
+  <div class="num">6</div>
+</section>
+
+<section class="light">
+  <h2>From screen to <em>shelf</em></h2>
+  <div class="cols">
+    <figure><img class="shot" src="img/print.jpg" alt="The print page with king height slider and per-piece downloads">
+      <figcaption>One number, the king’s height, scales every piece to tournament proportions. The whole set downloads as one zip with counts and a filament estimate.</figcaption></figure>
+    <figure><img class="shot" src="img/replace.jpg" alt="The lost piece page">
+      <figcaption>Lost a piece from a real set? Photograph one that survived; Lux3D draws the missing piece to match and builds it, ready to print.</figcaption></figure>
+  </div>
+  <div class="num">7</div>
+</section>
+
+<section class="light">
+  <h2>What changed along the way</h2>
+  <table>
+    <tr><th style="width:30%">What we found</th><th style="width:30%">Why it mattered</th><th>What we did</th></tr>
+    <tr><td>Pieces copied the king’s shape.</td><td>A set where every piece looks the same is unplayable.</td><td>A required silhouette per piece, and a strict king/queen distinction.</td></tr>
+    <tr><td>Each 3D piece arrived at about 9 MB.</td><td>A full set would take minutes to load on a phone.</td><td>1K WebP textures, a 24,000-triangle cap and mesh compression: about 0.5 MB each.</td></tr>
+    <tr><td>Our first chess engine took up to 17 s per move.</td><td>Nobody waits that long for a computer reply.</td><td>Switched to an open-source engine in a background thread: under 0.3 s.</td></tr>
+    <tr><td>Reopening your own online game could hand you the wrong seat.</td><td>Your friend would be locked out.</td><td>The server now recognises returning players by their seat token.</td></tr>
+    <tr><td>A piece arriving mid-move left a duplicate behind.</td><td>Pieces swap in live, so this would happen often.</td><td>Redraws wait until every piece has landed.</td></tr>
+    <tr><td>Print export crashed on compressed models.</td><td>No print files at all.</td><td>Positions are converted to full precision before export.</td></tr>
+  </table>
+  <div class="num">8</div>
+</section>
+
+<section>
+  <h2>Who it’s for</h2>
+  <div class="cols">
+    <div>
+      <p><b class="brass">Chess players</b> who want a set that is theirs, not a catalogue one.</p>
+      <p><b class="brass">Gift givers</b> — a family set, a city set, a set of a hobby.</p>
+      <p><b class="brass">3D-printing hobbyists</b> looking for something worth printing, sized and ready.</p>
+      <p><b class="brass">Anyone with a piece missing</b> from a set they love.</p>
+      <p class="muted" style="margin-top:24px">Still to come: a second, different finish per side from a second photo, and printing services wired straight into the download.</p>
+    </div>
+    <div class="links" style="margin-top:6px">
+      <div><b>Play</b>set-piece.onrender.com</div>
+      <div><b>Source</b>github.com/Nailer/set-piece</div>
+      <div><b>Built with</b>Aholo Lux3D, three.js, Next.js</div>
+      <p class="muted" style="font-size:18px; margin-top:30px; max-width:34ch">Thirty seconds is enough: open a set, press <span class="brass">Play the computer</span>, and move a piece.</p>
+    </div>
+  </div>
+  <div class="foot">Set Piece · every piece designed and built by Aholo Lux3D</div>
+</section>
+
+</body>
+</html>

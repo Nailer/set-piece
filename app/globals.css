@@ -274,8 +274,12 @@ em {
   z-index: 2;
   align-self: center;
   padding: 40px max(24px, calc((100vw - 1180px) / 2));
-  max-width: 640px;
   pointer-events: none;
+}
+
+/* The padding grows on wide screens, so the text column is capped instead of the box. */
+.hero-copy > * {
+  max-width: 600px;
 }
 
 .hero-copy > * {
